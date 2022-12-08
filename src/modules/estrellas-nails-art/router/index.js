@@ -8,5 +8,10 @@ export default {
             name:'home',
             component: () => import(/* webpackChunkName: "home" */ '@/modules/estrellas-nails-art/views/Home.vue'),
         },
+        {
+            path:'/colors',
+            name:'colors',
+            component: () => import(/* webpackChunkName: "colors" */ '@/modules/estrellas-nails-art/views/Colors.vue'),
+        }
     ]
 }
