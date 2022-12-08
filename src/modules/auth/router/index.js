@@ -13,6 +13,11 @@ export default {
             name:'register',
             component: () => import(/* webpackChunkName: "register" */ '@/modules/auth/views/Register.vue'),
         },
+        {
+            path:'/admin',
+            name:'homeAdmin',
+            component: () => import(/* webpackChunkName: "register" */ '@/modules/admin/views/HomeAdmin.vue'),
+        },
     ]
 
 }
