@@ -11,7 +11,7 @@ export default {
     components: {
         UploadImage: defineAsyncComponent(() => import("../components/UploadImage.vue"))
     },
-    
+
     setup() {
 
     },
