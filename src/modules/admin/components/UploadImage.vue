@@ -20,15 +20,20 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref } from 'vue';
+import { useStore } from 'vuex'
 import uploadImageDB from "@/modules/admin/helpers/uploadImageDB";
 
 export default {
   setup() {
 
+    const store = useStore()
+
     let imageSelector = ref(null);
     let localImage = ref(null);
     let file = ref(null);
+
+    store.dispatch('admin/loadPicture')
 
     return {
       imageSelector,
@@ -60,6 +65,7 @@ export default {
         localImage.value = null
         file.value = null
       }
+
     };
   },
 
