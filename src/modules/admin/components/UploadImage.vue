@@ -23,6 +23,7 @@
 import { ref } from 'vue';
 import { useStore } from 'vuex'
 import uploadImageDB from "@/modules/admin/helpers/uploadImageDB";
+import estrellasApi from '@/api/estrellasApi';
 
 export default {
   setup() {
@@ -33,7 +34,7 @@ export default {
     let localImage = ref(null);
     let file = ref(null);
 
-    store.dispatch('admin/loadPicture')
+    store.dispatch('admin/loadImage')
 
     return {
       imageSelector,
@@ -58,7 +59,13 @@ export default {
       },
 
       onSaveImage: async () => {
-        await uploadImageDB(file);
+        const image = await uploadImageDB(file);
+        const {data} = await estrellasApi.post(`gallery.json`, { picture: image })
+
+        if(data.name){
+          localImage.value = null
+          file.value = null
+        }
       },
 
       onCancelImage: () => {

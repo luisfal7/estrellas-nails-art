@@ -14,8 +14,6 @@ const uploadImageDB = async (file) => {
 
     const { data } = await axios.post(url, formData)
     
-    console.log(data.url)
-    
     return data.url;
 
   } catch (error) {

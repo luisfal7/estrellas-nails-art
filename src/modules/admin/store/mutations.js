@@ -1,7 +1,13 @@
 // export const myMutations = (state) => {}
 
-export const updatePicture = ( state, picture ) => {
+export const setImage = ( state, images ) => {
 
-    const idx = state.gallery.map( e => e.id).indexOf( picture.id )
-    state.gallery[idx] = picture
+    state.images = [ ...state.images, ...images ]
+
+}
+
+export const setModel = ( state, models ) => {
+
+    state.models = [ ...state.models, ...models ]
+
 }
