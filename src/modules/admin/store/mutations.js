@@ -11,3 +11,9 @@ export const setModel = ( state, models ) => {
     state.models = [ ...state.models, ...models ]
 
 }
+
+export const setColor = ( state, colors ) => {
+
+    state.colors = [ ...state.colors, ...colors ]
+
+}

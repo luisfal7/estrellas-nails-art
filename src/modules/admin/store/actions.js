@@ -28,6 +28,19 @@ export const loadModel = async ({commit}) => {
     commit('setModel', models)
 }
 
+export const loadColor = async ({commit}) => {
+
+    const { data } = await estrellasApi.get(`/colors.json`)
+    const models = []
+    for( let id of Object.keys( data ) ){
+        models.push({
+            id,
+            ...data[id]
+        })
+    }
+    commit('setColor', models)
+}
+
 /* export const updatePicture = async({commit}, picture) => {
 
     const { picture } = picture

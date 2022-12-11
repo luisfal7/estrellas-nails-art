@@ -66,6 +66,8 @@ export default {
           localImage.value = null
           file.value = null
         }
+
+        console.log(image)
       },
 
       onCancelImage: () => {
