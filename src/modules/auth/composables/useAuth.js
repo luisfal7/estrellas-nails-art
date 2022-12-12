@@ -9,8 +9,20 @@ const useAuth = () => {
         return resp
     }
 
+    const loginUser = async(user) => {
+        const resp = await store.dispatch('auth/signInUser', user)
+        return resp
+    }
+
+    const checkAuthStatus = async () => {
+        const resp = await store.dispatch('auth/checkAuthentication')
+        return resp
+    }
+
     return{
-        createUser
+        createUser,
+        loginUser,
+        checkAuthStatus
     }
 
 }
