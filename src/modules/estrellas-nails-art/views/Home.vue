@@ -1,5 +1,8 @@
 <template>
     <h1>home view</h1>
+    <button>
+        turno
+    </button>
     <Gallery/>
 </template>
 
