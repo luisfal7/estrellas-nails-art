@@ -1,6 +1,6 @@
 <template>
     <h1>home view</h1>
-    <button>
+    <button @click="onQuote">
         turno
     </button>
     <Gallery/>
@@ -8,6 +8,7 @@
 
 <script>
 import { defineAsyncComponent } from "vue";
+import { useRouter } from "vue-router";
 
 export default {
 
@@ -17,6 +18,13 @@ export default {
     
     setup() {
 
-    },
+        const router = useRouter()
+
+        return {
+
+            onQuote: () => router.push({ name: "quote" })
+
+        }
+    }
 }
 </script>

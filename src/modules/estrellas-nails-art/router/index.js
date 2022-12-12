@@ -1,3 +1,5 @@
+import isAuthenticatedGuard from '@/modules/auth/router/auth-guard';
+
 export default {
 
     name:'estrellas-nails-art',
@@ -12,6 +14,12 @@ export default {
             path:'/colors',
             name:'colors',
             component: () => import(/* webpackChunkName: "colors" */ '@/modules/estrellas-nails-art/views/Colors.vue'),
+        },
+        {
+            path:'/quote',
+            name:'quote',
+            beforeEnter: [ isAuthenticatedGuard ],
+            component: () => import(/* webpackChunkName: "quote" */ '@/modules/estrellas-nails-art/views/Quote.vue'),
         }
     ]
 }
