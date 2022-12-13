@@ -1,4 +1,5 @@
-import isAuthenticatedGuard from '@/modules/auth/router/auth-guard';
+import isAuthenticatedGuard from './auth-guard';
+
 
 export default {
 
