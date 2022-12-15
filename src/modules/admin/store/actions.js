@@ -41,6 +41,19 @@ export const loadColor = async ({commit}) => {
     commit('setColor', models)
 }
 
+export const loadServices = async ({commit}) => {
+
+    const { data } = await estrellasApi.get(`/services.json`)
+    const services = []
+    for( let id of Object.keys( data ) ){
+        services.push({
+            id,
+            ...data[id]
+        })
+    }
+    commit('setServices', services)
+}
+
 export const createService = async({commit}, newService) => {
 
     try {

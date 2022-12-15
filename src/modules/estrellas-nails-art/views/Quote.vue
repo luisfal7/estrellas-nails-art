@@ -47,14 +47,16 @@ export default {
   setup() {
       const store = useStore()
       const login = store.getters['auth/getState']
+      const loadServices = () => {
+        store.dispatch('admin/loadServices')
+      } 
+      loadServices()
 
       const { minDate ,maxDate, es } = useDatepicker()
 
       const { createClient } = useClient()
 
       const hours = ref([{ hour: '09:00' }, { hour: '10:00' }, { hour: '11:00' }, { hour: '12:00' }, { hour: '13:00' }, { hour: '14:00' }, { hour: '15:00' }, { hour: '16:00' }, { hour: '17:00' }, { hour: '18:00' }, { hour: '19:00' }, { hour: '20:00' }, { hour: '21:00' }])
-
-      const services = ref([{service: 'manicura 0'},{service: 'manicura 2'},{service: 'manicura 3'},{service: 'pedicure 1'}])
 
       const selectService = (service) => date.value.service.push(service.service)
 
@@ -81,7 +83,7 @@ export default {
           maxDate,
           minDate,
           es,
-          services,
+          services: computed(() => store.getters['admin/getServices']),
           selectService,
       }
   }

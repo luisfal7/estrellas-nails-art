@@ -1,7 +1,6 @@
 // export const myActions = async ({commit}) => {}
 
 import estrellasApi from "@/api/estrellasApi"
-import useClient from "../composables/useClient";
 
 export const loadModels = async ({commit}) => {
 
