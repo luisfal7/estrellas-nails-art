@@ -45,7 +45,7 @@ export const createClient = async ({commit}, client) => {
 
         if( !clients.some( e => e.fecha === client.fecha && e.hour === client.hour)){
             const { data } = await estrellasApi.post('clients.json', client)
-            console.log(data)
+            commit('addClient', client)
             return { ok: true }
         }else{
             return { ok: false, message: 'turno no valido' }
