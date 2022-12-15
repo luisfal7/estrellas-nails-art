@@ -17,3 +17,9 @@ export const setColor = ( state, colors ) => {
     state.colors = [ ...state.colors, ...colors ]
 
 }
+
+export const addService = ( state, service) => {
+
+    state.services = [ ...state.services, service ]
+
+}

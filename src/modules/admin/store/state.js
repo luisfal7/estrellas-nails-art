@@ -1,11 +1,6 @@
 export default () => ({
-    images:[
-        
-    ],
-    models:[
-        
-    ],
-    colors:[
-        
-    ]
-})
+  images: [],
+  models: [],
+  colors: [],
+  services: [],
+});

@@ -41,26 +41,27 @@ export const loadColor = async ({commit}) => {
     commit('setColor', models)
 }
 
-/* export const updatePicture = async({commit}, picture) => {
+export const createService = async({commit}, newService) => {
 
-    const { picture } = picture
-    const dataToSave = { picture }
-
-    const resp = await estrellasApi.put(`/gallery/${picture.id}`, dataToSave)
-
-    commit('updatePicture', { ...picture } )
-
-} */
-
-/* export const createPicture = async({commit}, image) => {
-
-    const { picture } = image
-    const dataToSave = { picture }
-
-    const { data } = await estrellasApi.post(`gallery.json`, dataToSave)
-
-    dataToSave.id = data.name
-
-    commit('addPicture', dataToSave)
-
-} */
+    try {
+        const { data } = await estrellasApi.get(`/services.json`)
+        const services = []
+        for( let id of Object.keys( data ) ){
+            services.push({
+                id,
+                ...data[id]
+            })
+        }
+        if(!services.some( e => e.service === newService.service )){
+            const { data } = await estrellasApi.post(`services.json`, newService)
+            console.log(data)
+            commit('addService', newService)
+            return { ok: true }
+        }else{
+            return { ok: false, message: 'Servicio ya existente' }
+        }
+    } catch (error) {
+        console.error(error)
+        return { ok: false, message: 'error...' }
+    }
+}

@@ -3,6 +3,7 @@
     <UploadImage/>
     <UploadModel/>
     <UploadColor/>
+    <UploadService/>
 </template>
 
 <script>
@@ -14,6 +15,7 @@ export default {
         UploadImage: defineAsyncComponent(() => import("../components/UploadImage.vue")),
         UploadModel: defineAsyncComponent(() => import("../components/UploadModel.vue")),
         UploadColor: defineAsyncComponent(() => import("../components/UploadColor.vue")),
+        UploadService: defineAsyncComponent(() => import("../components/UploadService.vue")),
     },
 
     setup() {
