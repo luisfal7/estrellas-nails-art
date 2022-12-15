@@ -15,7 +15,7 @@
       required
     >
     </Datepicker>
-    <select v-model="date.hours" required>
+    <select v-model="date.hour" required>
       <option v-for="hour in hours" :key="hour.hour">{{ hour.hour }}</option>
     </select>
     <ul>
@@ -28,16 +28,17 @@
       </li>
     </ul>
     <p v-if="date">Fecha seleccionada: {{ date }}</p>
-
     <button type="submit">Enviar</button>
   </form>
+
 </template>
 
 <script>
-  import { ref } from 'vue'
+  import { ref, computed } from 'vue'
   import { useStore } from "vuex";
   import Datepicker from '@vuepic/vue-datepicker'
   import useDatepicker from "../composables/useDatepicker";
+  import useClient from "../composables/useClient";
 
 export default {
 
@@ -48,6 +49,8 @@ export default {
       const login = store.getters['auth/getState']
 
       const { minDate ,maxDate, es } = useDatepicker()
+
+      const { createClient } = useClient()
 
       const hours = ref([{ hour: '09:00' }, { hour: '10:00' }, { hour: '11:00' }, { hour: '12:00' }, { hour: '13:00' }, { hour: '14:00' }, { hour: '15:00' }, { hour: '16:00' }, { hour: '17:00' }, { hour: '18:00' }, { hour: '19:00' }, { hour: '20:00' }, { hour: '21:00' }])
 
@@ -60,11 +63,14 @@ export default {
         email: login.user.email,
         service: [],
         fecha: '',
-        hours:''
+        hour:''
       })
-
-      const submitForm = () => {
-        console.log('enviar a db', date.value);
+    
+      const submitForm = async () => {
+        //let clientValidate = clients.some(e => e.fecha === date.value.fecha && e.hour === date.value.hour )
+        const { ok, message } = await createClient( date.value )
+        console.log(date.value)
+        console.log(ok, message)
       }
 
       return {
@@ -76,7 +82,7 @@ export default {
           minDate,
           es,
           services,
-          selectService
+          selectService,
       }
   }
 }
